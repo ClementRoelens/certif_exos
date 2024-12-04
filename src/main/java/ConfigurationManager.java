@@ -1,37 +1,44 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class ConfigurationManager {
-//    private String hostname;
-    // Pour simplifier j'ai mis un String pour le port
-//    private String port;
-//    private String appname;
-    private Map<String,String> config;
+    private final Map<String,String> config;
     private static ConfigurationManager instance;
 
     private ConfigurationManager(Map<String,String> config) {
-//        this.hostname = hostname;
-//        this.port = port;
-//        this.appname = appname;
         this.config = config;
     }
 
-    public static synchronized ConfigurationManager getInstance(Map<String,String> config) {
+    public static synchronized ConfigurationManager getInstance(File file) {
         if (instance == null) {
-            instance = new ConfigurationManager(config);
+            try {
+                instance = new ConfigurationManager(readConfig(file));
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
         }
         return instance;
     }
 
-//    @Override
-//    public String toString() {
-//        return String.format("La configuration est : \n" +
-//                "hostname : %s\n" +
-//                "port : %s\n" +
-//                "appname : %s",
-//                hostname, port, appname);
-//    }
-
     public String giveValue(String key){
         return config.get(key);
     }
+
+    private static Map<String,String> readConfig(File file) throws FileNotFoundException {
+        Scanner reader = new Scanner(file);
+        HashMap<String,String> config = new HashMap<>();
+
+        while (reader.hasNextLine()) {
+            String line = reader.nextLine();
+            String key = line.split("=")[0];
+            String value = line.split("=")[1];
+            config.put(key, value);
+        }
+
+        return config;
+    }
+
 }
