@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -9,11 +8,24 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Main {
+    private static final Scanner IRM = new Scanner(System.in);
+
+    private static int scanInt(){
+        while (true){
+            try {
+                return IRM.nextInt();
+            } catch (InputMismatchException e){
+                System.out.println("Entrez un nombre entier");
+            } finally {
+                IRM.nextLine();
+            }
+        }
+    }
+
     public static void main(String[] args) {
         List<Movie> movies = new ArrayList<>();
         // Juste pour afficher les entrées de façon lisible
         NumberFormat formatter = NumberFormat.getInstance(Locale.FRANCE);
-        Scanner IRM = new Scanner(System.in);
 
         try (BufferedReader reader = new BufferedReader(
                 new FileReader("C:\\Users\\Administrateur\\Documents\\Exos\\exo-stream-films\\src\\main\\resources\\films_with_genres 1.csv"))) {
@@ -36,42 +48,48 @@ public class Main {
         System.out.println("\nAppuyez sur Entrée pour afficher la réponse de chaque énoncé");
 
         // 1 - Affichage du titre
-        System.out.println("\nVoici le titre des 10 premiers films\n");
-        IRM.nextLine();
+        System.out.println("\nCombien des premiers films vous voulez voir ?");
+        int nbChoice = scanInt();
         movies.stream()
-                .limit(10)
+                .limit(nbChoice)
                 .map(Movie::title)
                 .forEach(System.out::println);
 
         // 2 - Filtrer
-        System.out.println("\nVoici les films d'action et leur année de sortie\n");
-        IRM.nextLine();
+        System.out.println("\nDe quel genre voulez-vous voir les films ainsi que leur année de sortie ?");
         movies.stream()
-                .filter(m -> m.genre().equals("Action"))
-                .forEach(m -> {
-                    System.out.println(m.title() + " - " + m.releaseDate().getYear());
-                });
+                .collect(Collectors.groupingBy(Movie::genre))
+                .keySet()
+                .forEach(System.out::println);
+        String genreChoice = IRM.nextLine();
+        movies.stream()
+                .filter(m -> m.genre().equalsIgnoreCase(genreChoice))
+                .forEach(m -> System.out.println(m.title() + " - " + m.releaseDate().getYear()));
 
-        System.out.println("\nVoici les films sortis après 2000\n");
-        IRM.nextLine();
+        System.out.println("\nÀ partir de quelle année voulez-vous voir les films ?");
+        final int year = scanInt();
         movies.stream()
-                .filter(m -> m.releaseDate().getYear() > 2000)
+                .filter(m -> m.releaseDate().getYear() >= year)
                 .map(Movie::title)
                 .forEach(System.out::println);
 
-        System.out.println("\nVoici les films de Michael Webster\n");
-        IRM.nextLine();
+        System.out.println("\nDe quel réalisateur voulez-vous voir les films ?");
         movies.stream()
-                .filter(m -> m.director().equals("Michael Webster"))
+                .collect(Collectors.groupingBy(Movie::director))
+                .keySet()
+                .forEach(System.out::println);
+        final String director = IRM.nextLine();
+        movies.stream()
+                .filter(m -> m.director().equalsIgnoreCase(director))
                 .map(Movie::title)
                 .forEach(System.out::println);
 
         //3 - Tri et limitation
-        System.out.println("\nVoici les 5 plus gros succès\n");
-        IRM.nextLine();
+        System.out.println("\nCombien des plus gros succès voulez-vous voir ?");
+        nbChoice = scanInt();
         movies.stream()
                 .sorted(Comparator.comparingInt(Movie::ticketsSalesNumber).reversed())
-                .limit(5)
+                .limit(nbChoice)
                 .forEach(m -> {
                     System.out.println(m.title() + " - " + formatter.format(m.ticketsSalesNumber()));
                 });
@@ -84,11 +102,11 @@ public class Main {
                     System.out.println(m.title() + " - " + m.releaseDate());
                 });
 
-        System.out.println("\nVoici les 10 films avec le plus petit nombre d'entrée\n");
-        IRM.nextLine();
+        System.out.println("\nCombien des moins gros succès voulez-vous voir ?");
+        nbChoice = scanInt();
         movies.stream()
                 .sorted(Comparator.comparingInt(Movie::ticketsSalesNumber))
-                .limit(10)
+                .limit(nbChoice)
                 .forEach(m -> {
                     System.out.println(m.title() + " - " + formatter.format(m.ticketsSalesNumber()));
                 });
@@ -121,21 +139,23 @@ public class Main {
 
         System.out.println("\nVoici le genre avec le plus grand nombre d'entrées\n");
         IRM.nextLine();
-        Map<String, List<Movie>> moviesByGenre = movies.stream().collect(Collectors.groupingBy(Movie::genre));
-        Map<String, Long> entriesCountByGenre = new HashMap<>();
-        moviesByGenre.forEach((key, value) -> {
-            long entryCount = value.stream()
-                    .mapToLong(Movie::ticketsSalesNumber).sum();
-            entriesCountByGenre.put(key, entryCount);
-        });
-        entriesCountByGenre.entrySet().stream()
+        movies.stream()
+                .collect(Collectors.groupingBy(
+                        Movie::genre,
+                        Collectors.summingLong(Movie::ticketsSalesNumber)
+                ))
+                .entrySet().stream()
                 .max(Map.Entry.comparingByValue())
                 .ifPresent(e -> System.out.println(e.getKey() + " - " + formatter.format(e.getValue()) + " entrées"));
 
-        System.out.println("\nLa moyenne d'entrée des films de Taylor Romero est :\n");
-        IRM.nextLine();
+        System.out.println("\nDe quel réalisateur voulez-vous voir la moyenne des entrées ?\n");
         movies.stream()
-                .filter(m -> m.director().equals("Taylor Romero"))
+                .collect(Collectors.groupingBy(Movie::director))
+                .keySet()
+                .forEach(System.out::println);
+        final String directorAverage = IRM.nextLine();
+        movies.stream()
+                .filter(m -> m.director().equalsIgnoreCase(directorAverage))
                 .mapToInt(Movie::ticketsSalesNumber)
                 .average()
                 .ifPresent(res -> {
@@ -143,44 +163,49 @@ public class Main {
                 });
 
         // 6 - Transformation
-        System.out.println("Voici les films affichés sous le modèle  \"Titre (Genre) - Réalisé par Réalisateur en Année\"");
+        System.out.println("Voici les films affichés sous le modèle  \"Titre (Genre) - Réalisé par Réalisateur en Année\"\n");
         IRM.nextLine();
         movies.forEach(m -> System.out.printf(
                 "%s (%s) - Réalisé par %s en %s \n",
                 m.title(),m.genre(),m.director(), m.releaseDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
 
-        System.out.println("\nLes genres présents sont : \n");
+        System.out.println("\nLes genres présents sont :\n");
         IRM.nextLine();
-        List<String> uniqueGenres = moviesByGenre.keySet().stream()
-                .toList();
-        uniqueGenres.forEach(System.out::println);
+        movies.stream()
+                .collect(Collectors.groupingBy(Movie::genre))
+                .keySet()
+                .forEach(System.out::println);
 
         // 7 - Avancées
 
         System.out.println("\nVoici les plus vieux films de chaque genre\n");
         IRM.nextLine();
-        moviesByGenre.forEach((key, value) -> {
-            value.stream()
-                    .min(Comparator.comparing(Movie::releaseDate))
-                    .ifPresent(m ->
-                            System.out.println("Le plus vieux film du genre " + key + " est " + m.title() +
-                                    " sorti en " + m.releaseDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
-        });
+        movies.stream()
+                .collect(Collectors.groupingBy(Movie::genre))
+                .forEach((key, value) -> {
+                    value.stream()
+                            .min(Comparator.comparing(Movie::releaseDate))
+                            .ifPresent(m ->
+                                    System.out.println("Le plus vieux film du genre " + key + " est " + m.title() +
+                                            " sorti en " + m.releaseDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
+                });
 
-        System.out.println("\nVoici les réalisateurs ayant réalisé plus de 50 films\n");
-        IRM.nextLine();
+        System.out.println("\nÀ partir de combien de films réalisés voulez-vous voir les réalisateurs ?");
+        final int directedLimit = scanInt();
         movies.stream()
                 .collect(Collectors.groupingBy(Movie::director))
                 .entrySet().stream()
-                .filter(e -> e.getValue().size() > 50)
+                .filter(e -> e.getValue().size() > directedLimit)
                 .forEach(e -> {
                     System.out.println(e.getKey() + " - " + e.getValue().size() + " films");
                 });
 
-        System.out.println("\nVoici le nombre total d'entrées réalisées entre 1990 et 2000 (compris) :\n");
-        IRM.nextLine();
+        System.out.println("\nÀ partir de quelle année voulez-vous compter les entrées ?");
+        final int beginYear = scanInt();
+        System.out.println("Jusqu'à quelle année voulez-vous compter les entrées ?");
+        final int endYear = scanInt();
         System.out.println(formatter.format(movies.stream()
-                .filter(m -> m.releaseDate().getYear() >= 1990 && m.releaseDate().getYear() <= 2000)
+                .filter(m -> m.releaseDate().getYear() >= beginYear && m.releaseDate().getYear() <= endYear)
                 .mapToLong(Movie::ticketsSalesNumber)
                 .sum()));
     }
