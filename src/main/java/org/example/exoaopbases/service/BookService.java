@@ -16,6 +16,7 @@ public class BookService {
     private static final Random random = new Random();
 
     @ExceptionAnnotation
+    @PerformanceAnnotation
     @ReturningLogAnnotation
     public List<String> findBooks(){
         try {

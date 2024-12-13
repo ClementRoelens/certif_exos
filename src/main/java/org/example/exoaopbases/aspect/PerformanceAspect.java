@@ -4,6 +4,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.example.exoaopbases.exception.NoMatchingBookException;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -21,8 +22,10 @@ public class PerformanceAspect {
         try {
             begin = System.currentTimeMillis();
             return proceedingJoinPoint.proceed();
+        } catch (NoMatchingBookException e){
+            throw new NoMatchingBookException(e);
         } catch (Throwable throwable) {
-            return new Throwable(throwable);
+            return null;
         } finally {
             end = System.currentTimeMillis();
             System.out.println("PerformanceAspect\nTemps d'exécution de " + methodName + " : " + (end - begin) + "ms");
