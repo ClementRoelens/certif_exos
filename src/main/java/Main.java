@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicIntegerArray;
 import java.util.stream.IntStream;
 
 public class Main {
@@ -128,14 +130,19 @@ public class Main {
         // Exo 16
 
         System.out.println("\nExo 16\n");
-        int[] numberArray = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
-        int[] partialSum = new int[4];
+        int[] numberArray = { 1, 2, 3, 4,
+                              5, 6, 7, 8,
+                             9, 10, 11, 12 };
+        AtomicIntegerArray atomicIntegerArray = new AtomicIntegerArray(4);
         Thread[] threads = new Thread[4];
         CyclicBarrier thirdBarrier = new CyclicBarrier(4, () -> {
             System.out.println("Les sommes partielles ont toutes été calculées");
             System.out.print("La somme totale est ");
-            IntStream stream = IntStream.of(numberArray);
-            System.out.println(stream.sum());
+            int sum = 0;
+            for (int i = 0; i < atomicIntegerArray.length(); i++) {
+                sum += atomicIntegerArray.get(i);
+            }
+            System.out.println(sum);
         });
 
         for (int i = 0; i < 4; i++) {
@@ -143,10 +150,10 @@ public class Main {
             List<Integer> numbersSummed = new ArrayList<>();
             threads[i] = new Thread(() -> {
                 for (int j = finalI; j < numberArray.length ; j += 4){
-                    partialSum[finalI] += numberArray[j];
+                    atomicIntegerArray.set(finalI, atomicIntegerArray.get(finalI) + numberArray[j]);
                     numbersSummed.add(numberArray[j]);
                 }
-                System.out.println(Thread.currentThread().getName() + " a calculé la somme de " + numbersSummed + "\nRésultat : " + partialSum[finalI]);
+                System.out.println(Thread.currentThread().getName() + " a calculé la somme de " + numbersSummed + "\nRésultat : " + atomicIntegerArray.get(finalI));
                 try {
                     thirdBarrier.await();
                 } catch (InterruptedException | BrokenBarrierException e) {
