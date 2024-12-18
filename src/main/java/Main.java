@@ -76,9 +76,8 @@ public class Main {
         Thread[] threads2 = createThreads(3,() -> {
             System.out.println(Thread.currentThread().getName() + " essaie d'utiliser l'imprimante");
             try {
-                if (reentrantLock.tryLock(4000, TimeUnit.MILLISECONDS)){
+                if (reentrantLock.tryLock(5, TimeUnit.MICROSECONDS)){
                     System.out.println(Thread.currentThread().getName() + " a l'autorisation d'utiliser l'imprimante");
-                    reentrantLock.lock();
                     Printer.print(Thread.currentThread().getName());
                     System.out.println(Thread.currentThread().getName() + " a imprimé son document et libère la place");
                     reentrantLock.unlock();
