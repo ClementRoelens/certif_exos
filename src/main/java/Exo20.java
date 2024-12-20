@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicReference;
 public class Exo20 {
     public static void main(String[] args) {
         final String ALPHABET = "abcdefghijklmnopqrstuvwxyz ";
-        final String TARGET = "merde";
+        final String TARGET = "test";
         ThreadLocalRandom random = ThreadLocalRandom.current();
         AtomicLong count = new AtomicLong();
         ExecutorService executor = Executors.newVirtualThreadPerTaskExecutor();
