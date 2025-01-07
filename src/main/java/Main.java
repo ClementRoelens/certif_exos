@@ -1,7 +1,5 @@
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -33,6 +31,14 @@ public class Main {
 
             switch (choice){
                 case 1 -> {
+                    try {
+                        System.out.println("Voici des exemples d'activités :");
+                        for (String example : ActivitiesProvider.getActivities()){
+                            System.out.println(" - " + example);
+                        }
+                    } catch (IOException e) {
+                        System.err.println("Impossible de lire les exemples d'activités" + e.getMessage());
+                    }
                     System.out.print("Entrez une description de l'activité : ");
                     try {
                         journal.addActivity(IRM.nextLine());

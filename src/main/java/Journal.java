@@ -10,6 +10,7 @@ public class Journal {
     private final String txtPath;
     private final String binaryPath;
     private final File file;
+    private static int count = 0;
 
     public Journal(String path, String binaryPath) {
         this.txtPath = path;
@@ -32,8 +33,14 @@ public class Journal {
             String activityLine = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) + " - " + activity;
             writer.write(activityLine);
             writer.newLine();
+            count++;
         } catch (FileNotFoundException e) {
             createFileIfNotExists();
+        }
+
+        if (count % 5 == 0){
+            System.out.println("SAUVEGARDE AUTOMATIQUE");
+            saveBinary();
         }
     }
 
