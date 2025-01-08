@@ -1,0 +1,24 @@
+08/01/2025 16:35:17: --- Début de l'aventure avec Archer ---
+08/01/2025 16:35:17: Événement : Un labyrinthe obscur se dresse devant vous.
+08/01/2025 16:35:17: Succès !
+08/01/2025 16:35:17: Événement : Vous êtes poursuivi par une meute de loups.
+08/01/2025 16:35:17: Succès !
+08/01/2025 16:35:17: Événement : Vous trouvez une source magique qui régénère votre santé.
+08/01/2025 16:35:17: Échec, vous perdez 16 points de vie
+08/01/2025 16:35:17: Événement : Un feu de camp abandonné contient des provisions.
+08/01/2025 16:35:17: Échec, vous perdez 26 points de vie
+08/01/2025 16:35:17: Événement : Vous rencontrez un marchand ambulant.
+08/01/2025 16:35:17: Succès !
+08/01/2025 16:35:17: Événement : Vous tombez dans un piège dissimulé.
+08/01/2025 16:35:17: Échec, vous perdez 28 points de vie
+08/01/2025 16:35:17: Événement : Une embuscade de voleurs vous surprend.
+08/01/2025 16:35:17: Succès !
+08/01/2025 16:35:17: Événement : Un cri au loin attire votre attention.
+08/01/2025 16:35:17: Échec, vous perdez 17 points de vie
+08/01/2025 16:35:17: Événement : Vous trouvez une arme légendaire enfouie dans la terre.
+08/01/2025 16:35:17: Succès !
+08/01/2025 16:35:17: Événement : Un vieil homme mystérieux vous propose une énigme.
+08/01/2025 16:35:17: Succès !
+08/01/2025 16:35:17: --- Fin de l'aventure de Archer ---
+Votre santé restante : 20
+
