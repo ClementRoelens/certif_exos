@@ -22,3 +22,143 @@
 08/01/2025 16:35:17: --- Fin de l'aventure de Archer ---
 Votre santé restante : 20
 
+09/01/2025 08:29:41: --- Début de l'aventure avec Paysan ---
+09/01/2025 08:29:41: Événement : Vous découvrez une carte indiquant un trésor caché.
+09/01/2025 08:29:41: Succès !
+09/01/2025 08:29:41: Événement : Un pont en ruines bloque votre chemin.
+09/01/2025 08:29:41: Succès !
+09/01/2025 08:29:41: Événement : Vous trouvez un coffre mystérieux.
+09/01/2025 08:29:41: Succès !
+09/01/2025 08:29:41: Événement : Un vieil homme mystérieux vous propose une énigme.
+09/01/2025 08:29:41: Succès !
+09/01/2025 08:29:41: Événement : Un labyrinthe obscur se dresse devant vous.
+09/01/2025 08:29:41: Échec, vous perdez 11 points de vie
+09/01/2025 08:29:41: Événement : Un cri au loin attire votre attention.
+09/01/2025 08:29:41: Échec, vous perdez 13 points de vie
+09/01/2025 08:29:41: Événement : Un feu de camp abandonné contient des provisions.
+09/01/2025 08:29:41: Succès !
+09/01/2025 08:29:41: Événement : Vous rencontrez un marchand ambulant.
+09/01/2025 08:29:41: Succès !
+09/01/2025 08:29:41: Événement : Une embuscade de voleurs vous surprend.
+09/01/2025 08:29:41: Échec, vous perdez 20 points de vie
+09/01/2025 08:29:41: Événement : Vous rencontrez un monstre dans la forêt.
+09/01/2025 08:33:12: --- Début de l'aventure avec Paysan ---
+09/01/2025 08:33:12: Événement : Vous tombez dans un piège dissimulé.
+09/01/2025 08:33:12: Échec, vous perdez 14 points de vie
+09/01/2025 08:33:12: Événement : Un labyrinthe obscur se dresse devant vous.
+09/01/2025 08:33:12: Succès !
+09/01/2025 08:33:12: Événement : Un vieil homme mystérieux vous propose une énigme.
+09/01/2025 08:33:12: Succès !
+09/01/2025 08:33:12: Événement : Vous trouvez un coffre mystérieux.
+09/01/2025 08:33:12: Échec, vous perdez 14 points de vie
+09/01/2025 08:33:12: Événement : Un pont en ruines bloque votre chemin.
+09/01/2025 08:33:12: Succès !
+09/01/2025 08:33:12: Événement : Une tempête vous oblige à chercher un abri.
+09/01/2025 08:33:12: Échec, vous perdez 7 points de vie
+09/01/2025 08:33:12: Événement : Un cri au loin attire votre attention.
+09/01/2025 08:33:12: Succès !
+09/01/2025 08:33:12: Événement : Vous trouvez une source magique qui régénère votre santé.
+09/01/2025 08:33:12: Échec, vous perdez 26 points de vie
+09/01/2025 08:33:12: Événement : Vous rencontrez un marchand ambulant.
+09/01/2025 08:33:12: Succès !
+09/01/2025 08:33:12: Événement : Un feu de camp abandonné contient des provisions.
+09/01/2025 08:33:12: Échec, vous perdez 8 points de vie
+09/01/2025 08:33:12: --- Fin de l'aventure de Paysan ---
+Votre santé restante : 15
+
+09/01/2025 08:33:34: --- Début de l'aventure avec Paladin ---
+09/01/2025 08:33:34: Événement : Un pont en ruines bloque votre chemin.
+09/01/2025 08:33:34: Succès !
+09/01/2025 08:33:34: Événement : Un labyrinthe obscur se dresse devant vous.
+09/01/2025 08:33:34: Succès !
+09/01/2025 08:33:34: Événement : Vous rencontrez un monstre dans la forêt.
+09/01/2025 08:38:10: --- Début de l'aventure avec Paladin ---
+09/01/2025 08:38:10: Événement : Vous êtes poursuivi par une meute de loups.
+09/01/2025 08:38:10: Succès !
+09/01/2025 08:38:10: Événement : Une tempête vous oblige à chercher un abri.
+09/01/2025 08:38:10: Succès !
+09/01/2025 08:38:10: Événement : Une embuscade de voleurs vous surprend.
+09/01/2025 08:38:10: Échec, vous perdez 15 points de vie
+09/01/2025 08:38:10: Événement : Vous rencontrez un marchand ambulant.
+09/01/2025 08:38:10: Succès !
+09/01/2025 08:38:10: Événement : Vous tombez dans un piège dissimulé.
+09/01/2025 08:38:10: Succès !
+09/01/2025 08:38:10: Événement : Vous trouvez un coffre mystérieux.
+09/01/2025 08:38:10: Succès !
+09/01/2025 08:38:10: Événement : Vous rencontrez un monstre dans la forêt.
+09/01/2025 08:38:10: Fin de l'aventure, le Loup-garou vous a eu.
+09/01/2025 08:38:10: --- Fin de l'aventure de Paladin ---
+Votre santé restante : -10
+
+09/01/2025 08:38:30: --- Début de l'aventure avec Samus ---
+09/01/2025 08:38:30: Événement : Vous êtes poursuivi par une meute de loups.
+09/01/2025 08:38:30: Succès !
+09/01/2025 08:38:30: Événement : Une embuscade de voleurs vous surprend.
+09/01/2025 08:38:30: Succès !
+09/01/2025 08:38:30: Événement : Un feu de camp abandonné contient des provisions.
+09/01/2025 08:38:30: Succès !
+09/01/2025 08:38:30: Événement : Un pont en ruines bloque votre chemin.
+09/01/2025 08:38:30: Échec, vous perdez 5 points de vie
+09/01/2025 08:38:30: Événement : Vous découvrez une carte indiquant un trésor caché.
+09/01/2025 08:38:30: Échec, vous perdez 9 points de vie
+09/01/2025 08:38:30: Événement : Vous trouvez un coffre mystérieux.
+09/01/2025 08:38:30: Échec, vous perdez 16 points de vie
+09/01/2025 08:38:30: Événement : Un vieil homme mystérieux vous propose une énigme.
+09/01/2025 08:38:30: Échec, vous perdez 15 points de vie
+09/01/2025 08:38:30: Événement : Vous tombez dans un piège dissimulé.
+09/01/2025 08:38:30: Succès !
+09/01/2025 08:38:30: Événement : Un labyrinthe obscur se dresse devant vous.
+09/01/2025 08:38:30: Succès !
+09/01/2025 08:38:30: Événement : Une tempête vous oblige à chercher un abri.
+09/01/2025 08:38:30: Échec, vous perdez 12 points de vie
+09/01/2025 08:38:30: --- Fin de l'aventure de Samus ---
+Votre santé restante : 100
+
+09/01/2025 08:38:40: --- Début de l'aventure avec Samus ---
+09/01/2025 08:38:40: Événement : Un pont en ruines bloque votre chemin.
+09/01/2025 08:38:40: Échec, vous perdez 19 points de vie
+09/01/2025 08:38:40: Événement : Vous rencontrez un monstre dans la forêt.
+09/01/2025 08:38:40: Succès !
+09/01/2025 08:38:40: Événement : Une embuscade de voleurs vous surprend.
+09/01/2025 08:38:40: Succès !
+09/01/2025 08:38:40: Événement : Vous tombez dans un piège dissimulé.
+09/01/2025 08:38:40: Succès !
+09/01/2025 08:38:40: Événement : Un cri au loin attire votre attention.
+09/01/2025 08:38:40: Échec, vous perdez 4 points de vie
+09/01/2025 08:38:40: Événement : Vous êtes poursuivi par une meute de loups.
+09/01/2025 08:38:40: Échec, vous perdez 19 points de vie
+09/01/2025 08:38:40: Événement : Une tempête vous oblige à chercher un abri.
+09/01/2025 08:38:40: Succès !
+09/01/2025 08:38:40: Événement : Vous découvrez une carte indiquant un trésor caché.
+09/01/2025 08:38:40: Succès !
+09/01/2025 08:38:40: Événement : Vous trouvez un coffre mystérieux.
+09/01/2025 08:38:40: Échec, vous perdez 2 points de vie
+09/01/2025 08:38:40: Événement : Vous trouvez une arme légendaire enfouie dans la terre.
+09/01/2025 08:38:40: Succès !
+09/01/2025 08:38:40: --- Fin de l'aventure de Samus ---
+Votre santé restante : 60
+
+09/01/2025 08:38:50: --- Début de l'aventure avec Samus ---
+09/01/2025 08:38:50: Événement : Vous rencontrez un monstre dans la forêt.
+09/01/2025 08:38:50: Succès !
+09/01/2025 08:38:50: Événement : Vous tombez dans un piège dissimulé.
+09/01/2025 08:38:50: Succès !
+09/01/2025 08:38:50: Événement : Vous découvrez une carte indiquant un trésor caché.
+09/01/2025 08:38:50: Échec, vous perdez 8 points de vie
+09/01/2025 08:38:50: Événement : Un vieil homme mystérieux vous propose une énigme.
+09/01/2025 08:38:50: Succès !
+09/01/2025 08:38:50: Événement : Un feu de camp abandonné contient des provisions.
+09/01/2025 08:38:50: Échec, vous perdez 12 points de vie
+09/01/2025 08:38:50: Événement : Vous trouvez une source magique qui régénère votre santé.
+09/01/2025 08:38:50: Succès !
+09/01/2025 08:38:50: Événement : Vous trouvez une arme légendaire enfouie dans la terre.
+09/01/2025 08:38:50: Succès !
+09/01/2025 08:38:50: Événement : Vous êtes poursuivi par une meute de loups.
+09/01/2025 08:38:50: Échec, vous perdez 5 points de vie
+09/01/2025 08:38:50: Événement : Une embuscade de voleurs vous surprend.
+09/01/2025 08:38:50: Échec, vous perdez 23 points de vie
+09/01/2025 08:38:50: Événement : Un cri au loin attire votre attention.
+09/01/2025 08:38:50: Échec, vous perdez 1 points de vie
+09/01/2025 08:38:50: --- Fin de l'aventure de Samus ---
+Votre santé restante : 60
+
