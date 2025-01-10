@@ -10,4 +10,4 @@ Endpoints disponibles
 | **GET** | `/quizzes/{id}` | Récupérer le quizz d'id spécifié, ou rien si l'id n'existe pas                     |
 | **POST** | `/quizzes` | Ajouter un nouveau quizz avec ses questions et options                             |
 | **POST** | `/quizzes/{id}/play` | Jouer à un quizz en soumettant les numéros des réponses sous forme clé/valeur      |
-| **DELETE** | `/quizzes/{id}` | SUpprimer un quizz                                                                 |
+| **DELETE** | `/quizzes/{id}` | Supprimer un quizz                                                                 |

@@ -1,9 +1,10 @@
 package org.example.exojee.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Quizz {
+public class Quizz implements Serializable {
     private int id;
     private static int count = 1;
     private Map<Integer, String> questions;

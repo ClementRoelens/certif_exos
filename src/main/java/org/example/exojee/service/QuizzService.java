@@ -1,8 +1,12 @@
 package org.example.exojee.service;
 
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+import org.example.exojee.DTO.Result;
 import org.example.exojee.model.Quizz;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,37 +14,42 @@ import java.util.Map;
 
 @ApplicationScoped
 public class QuizzService {
-    List<Quizz> quizzes;
+    private List<Quizz> quizzes;
+    private final String QUIZZES_PATH;
 
     public QuizzService() {
-        quizzes = new ArrayList<>();
+        QUIZZES_PATH = "C:\\Users\\Administrateur\\Documents\\Exos\\exo-jee\\quizzes.ser";
+        File file = new File(QUIZZES_PATH);
 
-        Map<Integer, String> questions = new HashMap<>();
-        questions.put(1, """
-                Qu'est-ce qu'un quizz ?
-                1 - Une variété de légumes
-                2 - Un jeu de questions/réponses
-                """);
-        questions.put(2, """
-                Qui est le meilleur formateur d'Utopios ?
-                1 - Ihab
-                2 - Christophe
-                3 - Mohammed
-                4 - Léo
-                """);
-        Map<Integer, Integer> answers = new HashMap<>();
-        answers.put(1, 2);
-        answers.put(2, 2);
+        if (!file.exists()) {
+            System.out.println("File does not exist");
+            try {
+                file.createNewFile();
+                System.out.println("File created");
+            } catch (IOException e) {
+                System.err.println(e.getMessage());
+            }
+        }
 
-        addQuizz(new Quizz(questions, answers));
+        try (ObjectInputStream stream = new ObjectInputStream(new FileInputStream(QUIZZES_PATH))){
+            quizzes = (List<Quizz>) stream.readObject();
+        } catch (Exception e) {
+            quizzes = new ArrayList<>();
+        }
     }
 
     public List<Quizz> getQuizzes() {
         return quizzes;
     }
 
-    public void addQuizz(Quizz quizz) {
+    public boolean addQuizz(Quizz quizz) {
         quizzes.add(quizz);
+        try {
+            serializeQuizzes();
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
     }
 
     public Quizz getQuizz(int id) {
@@ -50,22 +59,39 @@ public class QuizzService {
                 .orElse(null);
     }
 
-    public void removeQuizz(int id) {
-        quizzes.remove(getQuizz(id));
+    public boolean removeQuizz(int id) throws IOException {
+        if (quizzes.remove(getQuizz(id))){
+            serializeQuizzes();
+            return true;
+        }
+        return false;
     }
 
-    public int playQuizz(int quizzId, Map<Integer, Integer> answers){
+    public Result playQuizz(int quizzId, Map<Integer, Integer> answers){
         Quizz quizz = getQuizz(quizzId);
-        int result = 0;
+
+        if (quizz == null) {
+            return null;
+        }
+
+        Map<Integer, Boolean> resultsByQuestion = new HashMap<>();
+
+        int overallResult = 0;
 
         for (Map.Entry<Integer, Integer> entry : quizz.getAnswers().entrySet()) {
-            if (entry.getValue() == answers.get(entry.getKey())) {
-                result++;
+            if (entry.getValue().equals(answers.get(entry.getKey()))) {
+                overallResult++;
+                resultsByQuestion.put(entry.getKey(), entry.getValue().equals(answers.get(entry.getKey())));
             }
         }
 
-        return result;
+        return new Result(overallResult, resultsByQuestion);
     }
 
+    private void serializeQuizzes() throws IOException {
+        try (ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(QUIZZES_PATH))) {
+            stream.writeObject(quizzes);
+        }
+    }
 
 }
