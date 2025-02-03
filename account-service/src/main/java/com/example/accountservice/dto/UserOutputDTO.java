@@ -3,6 +3,7 @@ package com.example.accountservice.dto;
 import com.example.accountservice.entity.User;
 
 public class UserOutputDTO {
+    private String id;
     private String firstName;
     private String lastName;
     private String mail;
@@ -13,12 +14,21 @@ public class UserOutputDTO {
     }
 
     public UserOutputDTO(User user){
-        this.firstName = user.getFirstName();
-        this.lastName = user.getLastName();
-        this.mail = user.getMail();
-        this.phoneNumber = user.getPhoneNumber();
+        id = user.getId();
+        firstName = user.getFirstName();
+        lastName = user.getLastName();
+        mail = user.getUsername();
+        phoneNumber = user.getPhoneNumber();
     }
 
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return firstName;

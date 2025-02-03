@@ -1,4 +1,4 @@
-package com.example.accountservice.config;
+package com.example.gateway.config;
 
 import com.example.accountservice.config.jwt.JwtRequestFilter;
 import com.example.accountservice.service.UserService;

@@ -1,16 +1,16 @@
 package com.example.accountservice.entity;
 
 import com.example.accountservice.dto.UserInputDTO;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Collections;
 
 @Entity
+@Table(name = "users")
 public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -20,11 +20,12 @@ public class User implements UserDetails {
     private String mail;
     private String password;
     private String phoneNumber;
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
 
 
-    public User() {
-    }
-
+    public User() {}
     public User(UserInputDTO dto){
         this.firstName = dto.getFirstName();
         this.lastName = dto.getLastName();
@@ -36,7 +37,7 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return Collections.singletonList(new SimpleGrantedAuthority(role.getName()));
     }
 
     public String getPassword() {
@@ -50,24 +51,23 @@ public class User implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return UserDetails.super.isAccountNonExpired();
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return UserDetails.super.isAccountNonLocked();
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return UserDetails.super.isCredentialsNonExpired();
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return UserDetails.super.isEnabled();
+        return true;
     }
-
 
     public String getId() {
         return id;
@@ -107,5 +107,9 @@ public class User implements UserDetails {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
